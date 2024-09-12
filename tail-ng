@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: tail-ng <file> [numberOfLines] [refreshRate]"
+    exit 1
+fi
+
+logFile="$1"
+
+if [ ! -r "${logFile}" ]; then
+    echo "Error: File '${logFile}' does not exist or is not readable."
+    exit 1
+fi
+
+if ! [[ "$2" =~ ^[0-9]+$ ]] && [ -n "$2" ]; then
+    echo "Error: 'numberOfLines' must be a positive integer."
+    exit 1
+fi
+numberOfLines="${2:-10}"
+
+if ! [[ "$3" =~ ^[0-9]*\.?[0-9]+$ ]] && [ -n "$3" ]; then
+    echo "Error: 'refreshRate' must be a positive number."
+    exit 1
+fi
+refreshRate="${3:-0.6}"
+
+watch -n "${refreshRate}" "tac \"${logFile}\" | head -n \"${numberOfLines}\""
