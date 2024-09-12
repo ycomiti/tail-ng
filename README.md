@@ -68,7 +68,8 @@ For more information, please refer to the `LICENSE` file included in this reposi
 
 ## Contributing
 
-If you would like to contribute to this project, please fork the repository and submit a pull request. For more details, see the `CONTRIBUTING.md` file.
+If you would like to contribute to this project, please fork the repository and submit a pull request.<br>
+For more details, see the `CONTRIBUTING.md` file.
 
 ## Support
 
